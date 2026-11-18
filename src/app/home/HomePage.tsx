@@ -222,14 +222,16 @@ function WeeksCard() {
 type QItem = { id: string; debt?: string; icon: LucideIcon; tone: string; title: string; club: ClubId; meta: string; owner: string; action: string; to?: string; doneLabel: string };
 
 function useQueue(): QItem[] {
-  const late = MEMBERS.filter((m) => m.club === 'craon' && m.nextBilan && m.nextBilan.getTime() < Date.now()).length;
+  const late = clubStats('craon').bilansLate;
+  const absentLaval = clubStats('laval').absent;
+  const progMay = clubStats('mayenne').progWeek;
   const d = DEBTS.find((x) => DEBT_BASE[x.id] === 'new' && x.months >= 2) ?? DEBTS[0]!;
   return [
     { id: 'q-craon', icon: ClipboardList, tone: 'red', title: `${late} bilans en retard à Craon`, club: 'craon', meta: 'Créneaux proposés sur les 2 prochaines semaines', owner: 'MF', action: 'Planifier', doneLabel: 'Planifiés', to: '/suivi' },
     { id: 'q-debt', debt: d.id, icon: Wallet, tone: 'red', title: `Impayé de ${euro(d.amount, 2)} · ${d.member.first} ${d.member.last}`, club: d.member.club, meta: `${d.months} mois · ${d.note.toLowerCase()} · SMS préparé`, owner: d.owner, action: 'Envoyer le SMS', doneLabel: 'SMS envoyé' },
-    { id: 'q-fid', icon: HeartHandshake, tone: 'orange', title: '23 adhérents absents depuis 3 semaines à Laval Nord', club: 'laval', meta: 'Messages personnalisés prêts, un par adhérent', owner: 'NI', action: 'Relire', doneLabel: 'Envoyés', to: '/fidelisation' },
-    { id: 'q-prog', icon: Dumbbell, tone: 'amber', title: '14 programmes à renouveler à Mayenne', club: 'mayenne', meta: 'Répartis entre Sarah et Kevin, cette semaine', owner: 'SB', action: 'Attribuer', doneLabel: 'Attribués' },
-    { id: 'q-mail', icon: Mail, tone: 'navy', title: '6 mails attendent votre réponse', club: 'laval', meta: 'Prestataire ménage, banque, comptable · brouillons prêts', owner: 'NI', action: 'Ouvrir', doneLabel: 'Traités', to: '/mails' },
+    { id: 'q-fid', icon: HeartHandshake, tone: 'orange', title: `${absentLaval} adhérents absents depuis 3 semaines à Laval Nord`, club: 'laval', meta: 'Messages personnalisés prêts, un par adhérent', owner: 'NI', action: 'Relire', doneLabel: 'Envoyés', to: '/fidelisation' },
+    { id: 'q-prog', icon: Dumbbell, tone: 'amber', title: `${progMay} programmes à renouveler à Mayenne`, club: 'mayenne', meta: 'Répartis entre Sarah et Kevin, cette semaine', owner: 'SB', action: 'Attribuer', doneLabel: 'Attribués' },
+    { id: 'q-mail', icon: Mail, tone: 'navy', title: '6 mails attendent votre réponse', club: 'laval', meta: 'Ménage, réparation, comptable, CSE · brouillons prêts', owner: 'NI', action: 'Ouvrir', doneLabel: 'Traités', to: '/mails' },
   ];
 }
 
