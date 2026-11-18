@@ -10,7 +10,7 @@ export type Club = { id: ClubId; name: string; short: string; color: string; siz
 export const CLUBS: Club[] = [
   { id: 'laval', name: 'Laval Nord', short: 'LAV', color: '#EA5839', size: 520, manager: 'NI' },
   { id: 'mayenne', name: 'Mayenne', short: 'MAY', color: '#1C1B39', size: 410, manager: 'NI' },
-  { id: 'gontier', name: 'Château-Gontier', short: 'CHG', color: '#7B61FF', size: 380, manager: 'HB' },
+  { id: 'gontier', name: 'Laval Centre', short: 'LVC', color: '#7B61FF', size: 380, manager: 'HB' },
   { id: 'craon', name: 'Craon', short: 'CRA', color: '#0CA5A5', size: 260, manager: 'HB' },
   { id: 'sable', name: 'Sablé-sur-Sarthe', short: 'SAB', color: '#E39B0B', size: 300, manager: 'CL' },
 ];
@@ -117,7 +117,7 @@ function buildMembers(): Member[] {
       const lastVisit = addDays(TODAY, -Math.round(lazy < 0.95 ? r() * 9 : 21 + r() * 40));
       const rate = lazy < 0.95 ? 1 + r() * 2.5 : 0.2;
       const visits = Array.from({ length: 8 }, (_, w) => Math.max(0, Math.round(rate * (lazy < 0.95 ? 1 : (8 - w) / 3) + (r() - 0.5))));
-      // Retards : un peu plus à Craon et à Château-Gontier, où le suivi est encore sur Excel.
+      // Retards : un peu plus à Craon et à Laval Centre, où le suivi est encore sur Excel.
       const lateBias = c.id === 'craon' ? 0.2 : c.id === 'gontier' ? 0.14 : 0.07;
       const nextBilan = f.bilans ? addDays(TODAY, r() < lateBias ? -Math.round(3 + r() * 40) : Math.round(r() * (365 / f.bilans))) : null;
       const nextProgramme = f.programme ? addDays(TODAY, r() < lateBias * 0.8 ? -Math.round(2 + r() * 25) : Math.round(r() * f.programme)) : null;

@@ -87,7 +87,7 @@ export const MAILS: Mail[] = [
   {
     id: 'm-coach',
     from: 'Emma P.',
-    org: 'Coach · Château-Gontier',
+    org: 'Coach · Laval Centre',
     initials: 'EP',
     subject: 'Échange de créneau samedi',
     excerpt: 'Est-ce que je peux échanger mon samedi matin avec Lucas ? Il est d’accord…',
@@ -96,7 +96,7 @@ export const MAILS: Mail[] = [
     club: 'gontier',
     kind: 'team',
     found: [
-      { label: 'Planning de Château-Gontier', detail: 'Sam 29 · Emma · 8 h–13 h' },
+      { label: 'Planning de Laval Centre', detail: 'Sam 29 · Emma · 8 h–13 h' },
       { label: 'Lucas G.', detail: 'Libre le samedi 29' },
       { label: 'Bilans prévus samedi', detail: '3 bilans avec Emma' },
     ],

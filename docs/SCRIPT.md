@@ -23,11 +23,11 @@ Depuis mercredi dernier, c'est toujours le suivi des adhérents qui te coûte le
 « Avant de commencer : tout ce que tu vas voir est construit pour toi, mais les données sont fictives. Les clubs sont les tiens, les adhérents et les chiffres sont inventés.
 
 Ça, c'est ce que tu ouvrirais le matin. Tes cinq clubs sur un seul écran, préparé à 6 h.
-En haut, la question que tu te poses : est-ce que le suivi est à jour ? 82 % aujourd'hui, et 138 bilans en retard, dont 43 à Château-Gontier. »
+En haut, la question que tu te poses : est-ce que le suivi est à jour ? 82 % aujourd'hui, et 138 bilans en retard, dont 43 à Laval Centre. »
 
 [Montrer la carte des clubs.]
 
-« Ici, tu vois tout de suite où ça décroche : Craon et Château-Gontier. Tu n'as pas à ouvrir cinq fichiers pour le savoir. »
+« Ici, tu vois tout de suite où ça décroche : Craon et Laval Centre. Tu n'as pas à ouvrir cinq fichiers pour le savoir. »
 
 [Descendre jusqu'à « À traiter aujourd'hui ».]
 
