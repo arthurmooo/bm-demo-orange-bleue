@@ -14,6 +14,7 @@ import { cn } from '@/lib/cn';
 import { dur, ease, spring, tween } from '@/lib/motion';
 import { CLUBS, clubOf, clubStats, DEBT_SERIES, DEBTS, dayShort, euro, MEMBERS, membersOf, num, personOf, WEEKLY, type ClubId } from '@/data/demo';
 import { useStore } from '../store';
+import { BASE as DEBT_BASE } from '../impayes/ImpayesPage';
 import p from '../page.module.css';
 import h from './Home.module.css';
 import s from './Accueil.module.css';
@@ -121,9 +122,9 @@ function Kpi({ label, icon: Icon, value, unit, delta, sense, vs, series, tone, i
 }
 
 function Kpis() {
-  const { club } = useStore();
+  const { club, debtStage } = useStore();
   const st = clubStats(club);
-  const open = DEBTS.filter((d) => d.stage !== 'paid' && (club === 'all' || d.member.club === club));
+  const open = DEBTS.filter((d) => (debtStage[d.id] ?? DEBT_BASE[d.id] ?? d.stage) !== 'paid' && (club === 'all' || d.member.club === club));
   const owed = Math.round(open.reduce((a, d) => a + d.amount, 0));
   return (
     <section className={p.g3} aria-label="Indicateurs">
@@ -142,7 +143,9 @@ function ClubsCard() {
     <Card>
       <div className={p.ch}>
         <div className={p.chMain}>
-          <h3>Craon et Château-Gontier décrochent sur les bilans</h3>
+          <h3>
+            {rows[0]!.c.name} et {rows[1]!.c.name} décrochent sur les bilans
+          </h3>
         </div>
         <Tag>Suivis à jour</Tag>
       </div>
@@ -216,14 +219,14 @@ function WeeksCard() {
   );
 }
 
-type QItem = { id: string; icon: LucideIcon; tone: string; title: string; club: ClubId; meta: string; owner: string; action: string; to?: string; doneLabel: string };
+type QItem = { id: string; debt?: string; icon: LucideIcon; tone: string; title: string; club: ClubId; meta: string; owner: string; action: string; to?: string; doneLabel: string };
 
 function useQueue(): QItem[] {
   const late = MEMBERS.filter((m) => m.club === 'craon' && m.nextBilan && m.nextBilan.getTime() < Date.now()).length;
-  const d = DEBTS.find((x) => x.stage === 'new' && x.months >= 2) ?? DEBTS[0]!;
+  const d = DEBTS.find((x) => DEBT_BASE[x.id] === 'new' && x.months >= 2) ?? DEBTS[0]!;
   return [
     { id: 'q-craon', icon: ClipboardList, tone: 'red', title: `${late} bilans en retard à Craon`, club: 'craon', meta: 'Créneaux proposés sur les 2 prochaines semaines', owner: 'MF', action: 'Planifier', doneLabel: 'Planifiés', to: '/suivi' },
-    { id: 'q-debt', icon: Wallet, tone: 'red', title: `Impayé de ${euro(d.amount, 2)} · ${d.member.first} ${d.member.last}`, club: d.member.club, meta: `${d.months} mois · ${d.note.toLowerCase()} · SMS préparé`, owner: d.owner, action: 'Envoyer le SMS', doneLabel: 'SMS envoyé' },
+    { id: 'q-debt', debt: d.id, icon: Wallet, tone: 'red', title: `Impayé de ${euro(d.amount, 2)} · ${d.member.first} ${d.member.last}`, club: d.member.club, meta: `${d.months} mois · ${d.note.toLowerCase()} · SMS préparé`, owner: d.owner, action: 'Envoyer le SMS', doneLabel: 'SMS envoyé' },
     { id: 'q-fid', icon: HeartHandshake, tone: 'orange', title: '23 adhérents absents depuis 3 semaines à Laval Nord', club: 'laval', meta: 'Messages personnalisés prêts, un par adhérent', owner: 'NI', action: 'Relire', doneLabel: 'Envoyés', to: '/fidelisation' },
     { id: 'q-prog', icon: Dumbbell, tone: 'amber', title: '14 programmes à renouveler à Mayenne', club: 'mayenne', meta: 'Répartis entre Sarah et Kevin, cette semaine', owner: 'SB', action: 'Attribuer', doneLabel: 'Attribués' },
     { id: 'q-mail', icon: Mail, tone: 'navy', title: '6 mails attendent votre réponse', club: 'laval', meta: 'Prestataire ménage, banque, comptable · brouillons prêts', owner: 'NI', action: 'Ouvrir', doneLabel: 'Traités', to: '/mails' },
@@ -232,7 +235,7 @@ function useQueue(): QItem[] {
 
 function QueueCard() {
   const nav = useNavigate();
-  const { done, markDone, addLog } = useStore();
+  const { done, markDone, addLog, setDebtStage } = useStore();
   const items = useQueue();
   const left = items.filter((x) => !done[x.id]).length;
   return (
@@ -277,10 +280,14 @@ function QueueCard() {
                     <motion.span key="a" exit={{ opacity: 0, scale: 0.94 }}>
                       <Button
                         size="s"
-                        variant={i < 2 ? undefined : 'secondary'}
+                        variant={i < 2 ? 'primary' : 'secondary'}
                         onClick={() => {
                           if (x.to) return nav(x.to);
                           markDone(x.id);
+                          if (x.debt) {
+                            setDebtStage(x.debt, 'contacted');
+                            markDone(`dsent-${x.debt}`);
+                          }
                           addLog(x.title);
                           toast(x.doneLabel, { tone: 'ok' });
                         }}

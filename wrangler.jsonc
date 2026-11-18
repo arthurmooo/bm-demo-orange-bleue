@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Démo L'Orange Bleue : application statique (Vite) servie par un Worker, repli SPA.
+  "name": "bm-demo-orange-bleue",
+  "compatibility_date": "2026-11-01",
+  "account_id": "67ddc1bb87f5b87e970b3d27a9ba82d5",
+  "assets": { "directory": "./dist", "not_found_handling": "single-page-application" },
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "demo-orange-bleue.bm-automation-france.com", "custom_domain": true }]
+}
