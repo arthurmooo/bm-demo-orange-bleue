@@ -15,7 +15,7 @@ un rechargement remet la démo à zéro.
 npm install
 npm run dev        # http://127.0.0.1:5173
 npm run typecheck
-npm run deploy     # build + wrangler deploy (Worker statique, repli SPA)
+npm run deploy     # build, embarque dist/ dans le Worker, wrangler deploy
 ```
 
 ## Structure
