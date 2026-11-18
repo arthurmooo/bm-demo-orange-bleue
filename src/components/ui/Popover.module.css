@@ -1,0 +1,76 @@
+/* Surface flottante commune (popover, menu, liste de choix). Les autres modules la composent. */
+.surface {
+  z-index: var(--z-pop);
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r-l);
+  box-shadow: var(--sh-float);
+  outline: none;
+  will-change: transform, opacity;
+  animation: in var(--d-m) var(--ease-out);
+}
+
+.surface[data-state='closed'] {
+  animation: out var(--d-xs) var(--ease-in-out) forwards;
+}
+
+.surface[data-side='top'] {
+  animation-name: inTop;
+}
+
+.surface[data-side='top'][data-state='closed'] {
+  animation-name: outTop;
+}
+
+.content {
+  composes: surface;
+  transform-origin: var(--radix-popover-content-transform-origin);
+  padding: var(--s-2);
+  max-width: calc(100vw - 32px);
+  max-height: var(--radix-popover-content-available-height);
+  overflow: auto;
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-2px) scale(0.98);
+  }
+}
+
+@keyframes inTop {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes outTop {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(2px) scale(0.98);
+  }
+}

@@ -1,0 +1,81 @@
+.dial {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  margin: auto;
+}
+
+.ticks {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(var(--bd-strong) 0 0.8deg, transparent 0.8deg 6deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px));
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.track {
+  fill: none;
+  stroke: var(--bd-2);
+}
+
+.fill {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke var(--d-l) var(--ease-out);
+}
+
+.ac { stroke: var(--ac); }
+.wa { stroke: var(--wa); }
+.ko { stroke: var(--ko); }
+
+.center {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+}
+
+.digits {
+  position: relative;
+  display: grid;
+  height: 56px;
+  overflow: hidden;
+  font: 600 48px/56px var(--font-display);
+  letter-spacing: -0.01em;
+  transition: color var(--d-l) var(--ease-out);
+}
+
+.digit {
+  grid-area: 1 / 1;
+  display: block;
+  text-align: center;
+}
+
+.tx-ac { color: var(--tx); }
+.tx-wa { color: var(--neu); }
+.tx-ko { color: var(--bad); }
+
+.timeUp {
+  position: absolute;
+  top: 100%;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--r-pill);
+  background: var(--bad-bg);
+  color: var(--bad);
+  font: 600 var(--fs-s) / 1 var(--font-ui);
+  white-space: nowrap;
+}

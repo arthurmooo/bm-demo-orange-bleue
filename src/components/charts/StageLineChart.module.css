@@ -1,0 +1,203 @@
+.wrap {
+  position: relative;
+}
+
+.grid {
+  display: grid;
+}
+
+.yaxis {
+  position: relative;
+}
+
+.yaxis span {
+  position: absolute;
+  right: 14px;
+  transform: translateY(-50%);
+  font: 500 11px / 1 var(--font-ui);
+  color: var(--tx-4);
+  font-variant-numeric: tabular-nums;
+}
+
+.plot {
+  position: relative;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.gridline {
+  stroke: var(--bd-2);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.base {
+  stroke: var(--bd);
+}
+
+.value {
+  font: 600 13px var(--font-display);
+  fill: var(--tx);
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: var(--surf);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.valueKo {
+  fill: var(--tag-red);
+}
+
+.cols {
+  position: absolute;
+  inset: -8px 0;
+}
+
+.col {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  border-radius: var(--r-m);
+  cursor: pointer;
+  transition: background-color var(--d-s) var(--ease-out);
+}
+
+.col:hover {
+  background: rgba(15, 27, 51, 0.035);
+}
+
+.col:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: -2px;
+}
+
+.selected {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: var(--r-m);
+  background: rgba(8, 120, 249, 0.07);
+  pointer-events: none;
+}
+
+.nodata {
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border-radius: var(--r-m);
+  background: var(--hatch);
+  font: 500 12px / 1.35 var(--font-ui);
+  color: var(--tx-3);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.nodataLabel {
+  padding: 5px 10px;
+  border-radius: var(--r-s);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 0 0 1px var(--bd-2);
+}
+
+.ann {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: var(--r-pill);
+  background: var(--tag-red-bg);
+  color: var(--tag-red);
+  font: 600 12px / 1 var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.ann svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2;
+}
+
+.xaxis {
+  display: grid;
+  padding: 16px 0 14px;
+}
+
+.x {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.xl {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font: 500 var(--fs-xs) / 1.2 var(--font-ui);
+  color: var(--tx-3);
+  text-align: center;
+  white-space: nowrap;
+  transition: color var(--d-s) var(--ease-out);
+}
+
+.xOn .xl {
+  color: var(--tx);
+  font-weight: 600;
+}
+
+.xs {
+  font: 500 11px / 1 var(--font-ui);
+  color: var(--tx-4);
+  font-variant-numeric: tabular-nums;
+}
+
+.xName {
+  display: none;
+}
+
+/* Téléphone : neuf étapes en pictogrammes, le nom de l'étape touchée en dessous. */
+@media (max-width: 719px) {
+  .xaxis {
+    row-gap: 8px;
+    padding-bottom: 6px;
+  }
+
+  .xl {
+    display: none;
+  }
+
+  .xName {
+    display: block;
+    grid-column: 1 / -1;
+    font: 600 var(--fs-s) / 1.2 var(--font-ui);
+    color: var(--tx);
+    text-align: center;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1180px) {
+  .xl {
+    overflow: visible;
+    font-size: 10.5px;
+    white-space: normal;
+  }
+}

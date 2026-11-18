@@ -1,0 +1,311 @@
+/* Mise en page commune aux écrans de l'espace marque. */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.g2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.g3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.g75 {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 0 2px 6px;
+}
+
+.h1 {
+  font: 600 30px / 1.15 var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--tx);
+}
+
+/* En-tête de carte : titre qui énonce la réponse, légende ou action à droite */
+.ch {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ch h2 {
+  font: 600 18px / 1.3 var(--font-display);
+  color: var(--tx);
+}
+
+.ch h3 {
+  font: 600 var(--fs-l) / 1.35 var(--font-display);
+  color: var(--tx);
+}
+
+.chMain {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.cht {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Clés de légende */
+.kLine {
+  display: inline-block;
+  width: 12px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.kDash {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg, var(--bd-dash) 0 4px, transparent 4px 7px);
+}
+
+.kBand {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--sel-ring);
+}
+
+.kDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.kBox {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* Bloc vide : une autre mission choisie */
+.other {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 28px 30px;
+}
+
+.other h1 {
+  font: 600 var(--fs-2xl) / 1.25 var(--font-display);
+  color: var(--tx);
+}
+
+.otherMeta {
+  font-size: var(--fs-base);
+  color: var(--tx-2);
+}
+
+.otherAct {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.otherGrid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+}
+
+.otherText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.otherScore {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-left: 32px;
+  border-left: 1px solid var(--bd-2);
+}
+
+.otherNum {
+  font: 600 36px / 1 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--tx);
+}
+
+.otherOf {
+  margin-top: 4px;
+  font: 500 12px / 1 var(--font-display);
+  color: var(--tx-3);
+}
+
+.otherList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 200px;
+  list-style: none;
+}
+
+.otherList li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 500 var(--fs-m) / 1.2 var(--font-ui);
+  color: var(--tx);
+}
+
+.otherList li > span:last-child {
+  margin-left: auto;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1180px) {
+  .g2,
+  .g75 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Téléphone : une colonne, les tableaux deviennent des cartes, le titre de l'écran est dans la barre du haut. */
+@media (max-width: 719px) {
+  .stack {
+    gap: 12px;
+  }
+
+  .g2,
+  .g3,
+  .g75 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .hd .h1Bar {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .h1 {
+    font-size: 24px;
+  }
+
+  .hd,
+  .ch {
+    gap: 12px;
+  }
+
+  .hd [role='radiogroup'],
+  .ch [role='radiogroup'] {
+    width: 100%;
+  }
+
+  .hd [role='radiogroup'] > button,
+  .ch [role='radiogroup'] > button {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 44px;
+    min-width: 44px;
+    padding-inline: 8px;
+  }
+
+  .cards {
+    --cols: minmax(0, 1fr) !important;
+  }
+
+  .cards [role='rowgroup']:has([role='columnheader']) {
+    display: none;
+  }
+
+  .other {
+    padding: 20px;
+  }
+
+  .otherGrid,
+  .otherAct {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .otherScore {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+
+/* Tablette en portrait : le score de la mission passe sous son titre. */
+@media (min-width: 720px) and (max-width: 899px) {
+  .otherGrid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .otherScore {
+    padding: 20px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--bd-2);
+  }
+
+  .otherList {
+    flex: 1 1 auto;
+  }
+}
+
+/* Tablette et téléphone au doigt : le survol n'existe pas, les cibles passent à 44 px. */
+@media (pointer: coarse) {
+  .hd [role='radiogroup'] > button,
+  .ch [role='radiogroup'] > button {
+    height: auto;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .cht a,
+  .ch > a {
+    padding-block: 14px;
+    margin-block: -14px;
+  }
+}

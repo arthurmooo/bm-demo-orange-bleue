@@ -1,0 +1,64 @@
+.ringLbl { margin-top: 4px; font: 500 12px / 1 var(--font-ui); color: var(--tx-3); }
+.hello { font: 500 15px / 1.3 var(--font-ui); color: var(--ac); margin-bottom: 10px; }
+.hm h1 b { color: var(--ac); font-weight: 600; }
+
+/* Barre des clubs */
+.clubBar { display: flex; gap: 3px; height: 12px; margin-top: 20px; }
+.clubBar i { display: block; border-radius: 3px; transform-origin: 0 50%; }
+.clubLeg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; margin-top: 14px; font-size: 12px; color: var(--tx-3); }
+.clubLeg span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.clubLeg i { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+.clubLeg b { font-weight: 600; color: var(--tx); font-variant-numeric: tabular-nums; }
+
+/* Suivi par club */
+.cl { display: flex; flex-direction: column; gap: 4px; margin-top: 18px; }
+.clr { display: grid; grid-template-columns: 150px minmax(0, 1fr) 54px 120px; align-items: center; gap: 14px; padding: 9px 10px; border-radius: var(--r-m); transition: background-color var(--d-s) var(--ease-out); }
+.clr:hover { background: var(--row-hv); }
+.cln { display: inline-flex; align-items: center; gap: 9px; font: 500 var(--fs-m) / 1.2 var(--font-ui); color: var(--tx); }
+.cln i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.bar { position: relative; height: 10px; border-radius: var(--r-pill); background: var(--chart-track); overflow: hidden; }
+.bar i { position: absolute; inset: 0 auto 0 0; border-radius: var(--r-pill); transform-origin: 0 50%; }
+.pct { font: 600 15px / 1 var(--font-display); color: var(--tx); text-align: right; font-variant-numeric: tabular-nums; }
+.late { font-size: 12px; color: var(--tx-3); text-align: right; }
+.late b { color: var(--bad); font-weight: 600; }
+
+/* Colonnes 12 semaines */
+.cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: end; gap: 8px; height: 168px; margin-top: 22px; padding-bottom: 2px; border-bottom: 1px solid var(--bd); }
+.col { position: relative; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+.colP { position: absolute; bottom: 0; left: 18%; right: 18%; border-radius: 6px 6px 2px 2px; background: var(--chart-track); }
+.colD { position: absolute; bottom: 0; left: 18%; right: 18%; border-radius: 6px 6px 2px 2px; background: var(--ac); transform-origin: 50% 100%; }
+.colX { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px; margin-top: 8px; font-size: 11px; color: var(--tx-4); text-align: center; }
+.leg { display: flex; gap: 16px; font-size: 12px; color: var(--tx-3); }
+.leg span { display: inline-flex; align-items: center; gap: 6px; }
+.leg i { width: 10px; height: 10px; border-radius: 3px; }
+
+/* File d'attention */
+.q { display: flex; flex-direction: column; margin-top: 12px; }
+.qi { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 12px 10px; border-radius: var(--r-m); border-top: 1px solid var(--bd-2); transition: background-color var(--d-s) var(--ease-out); }
+.qi:first-child { border-top: 0; }
+.qi:hover { background: var(--row-hv); }
+.qic { display: grid; place-items: center; width: 36px; height: 36px; border-radius: var(--r-ctl); }
+.qic svg { width: 18px; height: 18px; stroke-width: 1.9; }
+.qt { font: 500 var(--fs-base) / 1.3 var(--font-ui); color: var(--tx); }
+.qm { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 12px; color: var(--tx-3); flex-wrap: wrap; }
+.qa { display: inline-flex; align-items: center; gap: 10px; }
+.qdone { display: inline-flex; align-items: center; gap: 6px; font: 500 12.5px / 1 var(--font-ui); color: var(--good); }
+.qdone svg { width: 16px; height: 16px; }
+.tone-red { background: var(--bad-bg); color: var(--bad); }
+.tone-amber { background: var(--neu-bg); color: var(--neu); }
+.tone-orange { background: var(--ac-soft); color: var(--ac-dk); }
+.tone-navy { background: var(--tag-blue-bg); color: var(--tag-blue); }
+.tone-green { background: var(--good-bg); color: var(--good); }
+
+/* Dicté ce matin */
+.vn { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.vi { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: var(--r-l); background: var(--surf-head); border: 1px solid var(--bd-2); }
+.vh { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--tx-3); }
+.vh b { color: var(--tx); font-weight: 600; font-size: 13px; }
+.wave { display: inline-flex; align-items: center; gap: 2px; height: 18px; margin-left: auto; }
+.wave i { width: 3px; border-radius: 2px; background: var(--ac); opacity: .75; }
+.vq { font-size: 13px; line-height: 1.45; color: var(--tx-2); font-style: italic; }
+.vr { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.clubDot { display: inline-flex; align-items: center; gap: 6px; }
+.clubDot i { width: 8px; height: 8px; border-radius: 50%; }

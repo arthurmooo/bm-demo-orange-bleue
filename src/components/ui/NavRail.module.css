@@ -1,0 +1,175 @@
+/* Rail de navigation repliable. La colonne garde 64 px dans la mise en page ; le panneau déplié la recouvre. */
+
+.rail {
+  position: relative;
+  z-index: var(--z-rail);
+  flex: 0 0 64px;
+  width: 64px;
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 220px;
+  padding: 12px 9px;
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: var(--r-panel);
+}
+
+.open {
+  box-shadow: var(--sh-float);
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 4px;
+  border-radius: var(--r-l);
+  background: var(--surf);
+  box-shadow: 0 0 0 1px var(--bd);
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  border-radius: var(--r-l);
+  color: var(--tx-3);
+  text-align: left;
+  transition: color var(--d-s) var(--ease-out), background-color var(--d-s) var(--ease-out);
+}
+
+.ic {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-l);
+  transition: background-color var(--d-s) var(--ease-out), transform var(--d-m) var(--ease-spring);
+}
+
+.ic svg {
+  position: relative;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.75;
+}
+
+.lb {
+  overflow: hidden;
+  padding-left: 4px;
+  font: 500 14px / 1.2 var(--font-ui);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.item:hover {
+  color: var(--tx);
+}
+
+.panel:not(.open) .item:hover .ic,
+.open .item:hover {
+  background: var(--hv);
+}
+
+.item:active .ic {
+  transform: scale(var(--tap-icon));
+  transition-duration: var(--d-xs);
+}
+
+.item[aria-current='page'] {
+  color: var(--ac-hv);
+}
+
+.open .item[aria-current='page'] {
+  background: var(--ac-soft);
+}
+
+.open .item[aria-current='page'] .on {
+  opacity: 0;
+}
+
+.item:focus-visible {
+  outline: none;
+}
+
+.panel:not(.open) .item:focus-visible .ic,
+.open .item:focus-visible {
+  box-shadow: var(--sh-focus);
+}
+
+.on {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-l);
+  background: var(--ac-soft);
+}
+
+.soon,
+.soon:hover {
+  color: var(--tx-5);
+  cursor: default;
+}
+
+.panel:not(.open) .soon:hover .ic,
+.open .soon:hover {
+  background: transparent;
+}
+
+.soon:active .ic {
+  transform: none;
+}
+
+.sep {
+  width: 28px;
+  height: 1px;
+  margin: 4px 8px;
+  background: var(--bd);
+}
+
+.grow {
+  flex: 1 1 auto;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 6px 0 0 4px;
+}
+
+/* Compteur sur l'icône : décisions à prendre, messages non lus */
+.badge {
+  position: absolute;
+  top: 3px;
+  right: 1px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: var(--r-pill);
+  border: 2px solid var(--surf);
+  background: var(--ac-hv);
+  color: var(--tx-inv);
+  font: 600 10px / 1 var(--font-ui);
+  font-variant-numeric: tabular-nums;
+}

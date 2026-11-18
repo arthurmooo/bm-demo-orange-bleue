@@ -1,0 +1,176 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: var(--ctl-h);
+  min-width: 160px;
+  padding: 0 10px 0 12px;
+  border-radius: var(--r-ctl);
+  border: 1px solid var(--bd);
+  background: var(--surf);
+  color: var(--tx);
+  font: 500 var(--fs-m) / 1 var(--font-ui);
+  text-align: left;
+  white-space: nowrap;
+  box-shadow: var(--sh-1);
+  transition: border-color var(--d-s) var(--ease-out), box-shadow var(--d-s) var(--ease-out), transform var(--d-m) var(--ease-spring);
+}
+
+.trigger:hover {
+  border-color: var(--bd-hv);
+}
+
+.trigger:active {
+  transform: scale(var(--tap));
+}
+
+.trigger[data-state='open'] {
+  border-color: var(--ac);
+  box-shadow: var(--sh-sel);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+}
+
+.trigger[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.trigger[data-placeholder] .value {
+  color: var(--tx-4);
+}
+
+.s {
+  height: var(--ctl-h-s);
+  font-size: var(--fs-s);
+  border-radius: var(--r-s);
+}
+
+.touch {
+  height: 48px;
+  padding: 0 12px 0 14px;
+  border-radius: var(--r-m);
+  font: 400 var(--fs-l) / 1.3 var(--font-ui);
+  box-shadow: none;
+}
+
+.full {
+  width: 100%;
+}
+
+.value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--tx-3);
+  stroke-width: 1.9;
+  transition: transform var(--d-m) var(--ease-out);
+}
+
+.trigger[data-state='open'] .icon {
+  transform: rotate(180deg);
+}
+
+.content {
+  composes: surface from './Popover.module.css';
+  transform-origin: var(--radix-select-content-transform-origin);
+  min-width: var(--radix-select-trigger-width);
+  max-height: min(360px, var(--radix-select-content-available-height));
+  overflow: hidden;
+}
+
+.viewport {
+  padding: 6px;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: var(--r-ctl);
+  color: var(--tx);
+  font: 500 var(--fs-m) / 1.25 var(--font-ui);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  transition: background-color var(--d-xs) var(--ease-out);
+}
+
+.item[data-highlighted] {
+  background: var(--hv);
+}
+
+.item[data-disabled] {
+  color: var(--tx-4);
+  cursor: not-allowed;
+}
+
+.item[data-state='checked'] {
+  font-weight: 600;
+}
+
+.itemBody {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sub {
+  font: 400 12px / 1.3 var(--font-ui);
+  color: var(--tx-3);
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--ac-hv);
+}
+
+.check svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.2;
+}
+
+.label {
+  padding: 10px 10px 6px;
+  font: 600 12px / 1 var(--font-ui);
+  color: var(--tx-3);
+}
+
+.scroll {
+  display: grid;
+  place-items: center;
+  height: 24px;
+  color: var(--tx-3);
+  cursor: default;
+}
+
+.scroll svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Téléphone : cibles tactiles de 44 px */
+@media (pointer: coarse) {
+  .item {
+    min-height: 44px;
+  }
+}

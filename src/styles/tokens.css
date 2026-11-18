@@ -1,0 +1,189 @@
+/* SaferBuy · jetons de design (DA figée sur la maquette Accueil V5 et le kit).
+   Thème clair. Les composants lisent ces variables, jamais de valeur en dur. */
+
+:root {
+  /* Surfaces */
+  --bg: #EDF0F5;
+  --canvas: #F7F8FB;
+  --surf: #FFFFFF;
+  --surf-2: #FBFCFE;
+  --hv: #F3F5F9;
+  --press: #EBEEF4;
+  --surf-head: #F6F8FB;  /* en-tête de tableau, bandeau, encart */
+  --row-hv: #F6F9FF;     /* survol d'une ligne de tableau ou de liste */
+  --icon-bg: #F2F5FA;    /* fond des pictogrammes */
+  --chip-bg: #F0F2F6;    /* contrôle segmenté, codes pays */
+
+  /* Sélection : pâle pour une ligne, halo pour un contrôle ouvert ou choisi */
+  --sel-bg: #F3F7FE;
+  --sel-bd: #D6E4FF;
+  --sel-ring: rgba(8, 120, 249, 0.14);
+
+  /* Ligne « Nouveau » (friction à prendre en charge) */
+  --new-bg: #FFFBFA;
+  --new-hv: #FFF5F3;
+
+  /* Bords */
+  --bd: #E3E7EE;
+  --bd-2: #EEF1F5;
+  --bd-hv: #C9D4E5;
+  --bd-strong: #D0D6E0;
+  --bd-dash: #98A2B3;    /* pointillés et repères gris (printemps, sans donnée) */
+
+  /* Texte */
+  --tx: #0F1B33;
+  --tx-2: #3F4B60;
+  --tx-3: #5E6A80;
+  --tx-4: #667085;
+  --tx-5: #B6BECB;       /* icône désactivée, cellule vide : jamais pour un texte à lire */
+  --tx-inv: #FFFFFF;
+  --tx-inv-2: rgba(255, 255, 255, 0.72);
+
+  /* Marque et action */
+  --ink: #0F1B33;
+  --ink-hv: #22324F;
+  --ac: #0878F9;
+  --ac-hv: #0868DA;
+  --ac-dk: #0B4FA8;
+  --ac-soft: #EAF2FF;
+  --ac-ring: rgba(8, 120, 249, 0.32);
+
+  /* Tons d'état : bleu = en règle, orange = à surveiller, rouge = action requise */
+  --ok: #0878F9;
+  --wa: #F5A524;
+  --ko: #E5484D;
+  --ko-strong: #D9363C;  /* rouge plein qui porte un texte blanc (4,6:1) */
+  --ko-hv: #C42F35;
+  --online: var(--score-hi);  /* point « en ligne » sur un avatar */
+  --whatsapp: #128C4B;   /* icône WhatsApp (vert assombri, 4,3:1 sur blanc) */
+
+  /* Évolution (sens métier) */
+  --good: #11744A;
+  --good-bg: #E7F6EE;
+  --bad: #B42318;
+  --bad-bg: #FDECEC;
+  --neu: #A15C07;
+  --neu-bg: #FFF2E0;
+
+  /* Score /100 : ≥ 80 vert, 70–79 orange, < 70 rouge */
+  --score-hi: #16A06A;   /* même vert que les courbes (palette.ts) */
+  --score-hi-bg: #E7F6EE;
+  --score-mid: #F79009;
+  --score-mid-bg: #FFF2E0;
+  --score-lo: #E5484D;
+  --score-lo-bg: #FDECEC;
+
+  /* Tags par type */
+  --tag-ai-bg: #F1ECFF;  --tag-ai: #5B2FC2;
+  --tag-blue-bg: #E8F1FF; --tag-blue: #0A58C2;
+  --tag-red-bg: #FDECEC;  --tag-red: #B42318;
+  --tag-green-bg: #E6F6EE; --tag-green: #11744A;
+  --tag-teal-bg: #E1F5F2; --tag-teal: #0E6B62;
+  --tag-amber-bg: #FFF2E0; --tag-amber: #A15C07;
+  --tag-gray-bg: #EEF1F5; --tag-gray: #344054;
+
+  /* Rôles (identité uniquement, jamais un statut) */
+  --role-ms-bg: #DDF5F2;    --role-ms: #0E6B62;
+  --role-staff-bg: #E3ECFF; --role-staff: #0B3E8F;
+  --role-me-bg: #0F1B33;    --role-me: #FFFFFF;
+  --role-brand-bg: #F1E8FD; --role-brand: #6B2BB5;
+
+  /* Pays dans les graphes */
+  --c-fr: #0878F9;
+  --c-ie: #0CA5A5;
+  --c-gb: #7B61FF;
+  --c-de: #E8590C;
+  --c-be: #C99A06;
+  --c-intl: #0F1B33;
+
+  /* Graphes (mêmes valeurs que src/components/charts/palette.ts) */
+  --chart-good: var(--score-hi);
+  --chart-track: #EEF1F5;
+  --ac-tint: #CFE0FB;    /* plage bleue pâle : fourchette annoncée, guillemets */
+  --hatch-a: #F2F5FA;    /* hachures : cadre neutre de preuve (.evph du kit), « pas encore de données » */
+  --hatch-b: #EBEFF5;
+  --hatch: repeating-linear-gradient(135deg, var(--hatch-a) 0 8px, var(--hatch-b) 8px 16px);
+
+  /* Réglette à paliers de score, en version pâle (< 70, 70–79, ≥ 80) */
+  --zone-lo: #FBD0CE;
+  --zone-mid: #FDE3BF;
+  --zone-hi: #C9ECD8;
+
+  /* Part des commandes touchées par un problème : 1 sur 10 (ambre), 2 sur 10 (ici), 3 et plus (--ko) */
+  --heat-bg: #FDD9C7;
+  --heat: #9A3412;
+
+  /* Sur fond marine (infobulle, toast, bande de confirmation) */
+  --ink-good: #7FE0B0;
+  --ink-bad: #FDA29B;
+  --ink-info: #8BC0FF;
+
+  /* Rayons */
+  --r-xs: 6px;
+  --r-s: 8px;
+  --r-ctl: 10px;
+  --r-m: 12px;
+  --r-l: 14px;
+  --r-card: 18px;
+  --r-panel: 20px;       /* rail, zone principale, tiroir, cadre du formulaire */
+  --r-sheet: 24px;
+  --r-pill: 999px;
+
+  /* Ombres : très légères, en couches */
+  --sh-1: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --sh-2: 0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 12px -2px rgba(16, 24, 40, 0.06);
+  --sh-3: 0 2px 4px rgba(16, 24, 40, 0.04), 0 12px 32px -6px rgba(16, 24, 40, 0.14);
+  --sh-float: 0 8px 16px -4px rgba(16, 24, 40, 0.10), 0 24px 48px -12px rgba(16, 24, 40, 0.18);  /* surface bordée qui flotte : menu, popover */
+  --sh-pop: 0 0 0 1px rgba(16, 24, 40, 0.06), var(--sh-float);
+  --sh-ink: 0 10px 28px -8px rgba(15, 27, 51, 0.38);  /* surface marine qui flotte : infobulle, toast, bulle */
+  --sh-sheet: 0 -12px 40px rgba(16, 24, 40, 0.18);
+  --sh-focus: 0 0 0 2px var(--surf), 0 0 0 4px var(--ac);  /* anneau net : 4,2:1 sur blanc (AA, contraste non textuel) */
+  --sh-sel: 0 0 0 3px var(--sel-ring);     /* contrôle ouvert, champ actif, carte choisie */
+  --scrim: rgba(15, 27, 51, 0.4);
+
+  /* Espacements (base 4) */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px; --s-12: 48px;
+
+  /* Typo */
+  --font-ui: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), system-ui, sans-serif;
+  --fs-xs: 11.5px;
+  --fs-s: 12.5px;
+  --fs-m: 13.5px;
+  --fs-base: 14px;
+  --fs-l: 16px;
+  --fs-xl: 20px;
+  --fs-2xl: 26px;
+  --fs-3xl: 34px;
+
+  /* Contrôles */
+  --ctl-h: 38px;
+  --ctl-h-s: 32px;
+  --ctl-h-touch: 48px;
+
+  /* Mouvement : mêmes valeurs que src/lib/motion.ts */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-emph: cubic-bezier(0.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --d-xs: 120ms;
+  --d-s: 180ms;
+  --d-m: 240ms;
+  --d-l: 360ms;
+  --d-xl: 600ms;
+
+  /* Appui : 0,97 pour un contrôle, 0,94 pour un bouton d'icône, 0,985 pour une grande surface */
+  --tap: 0.97;
+  --tap-icon: 0.94;
+  --tap-lg: 0.985;
+
+  /* Plans */
+  --z-sticky: 10;
+  --z-rail: 20;
+  --z-pop: 50;
+  --z-overlay: 60;
+  --z-sheet: 70;
+  --z-toast: 80;
+  --z-tip: 90;
+}

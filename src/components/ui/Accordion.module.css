@@ -1,0 +1,84 @@
+/* Sans spécificité : la mise en page passée par `className` l'emporte quel que soit l'ordre des feuilles. */
+:where(.trigger) {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: 2px;
+  border-radius: var(--r-m);
+}
+
+.chevron {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--tx-3);
+  stroke-width: 1.9;
+  transition: transform var(--d-m) var(--ease-out), color var(--d-s) var(--ease-out);
+}
+
+.trigger:hover .chevron {
+  color: var(--tx);
+}
+
+.trigger[data-state='open'] .right {
+  transform: rotate(90deg);
+}
+
+.trigger[data-state='open'] .down {
+  transform: rotate(180deg);
+}
+
+.trigger[data-state='open'] .chevron {
+  color: var(--tx);
+}
+
+.content {
+  overflow: hidden;
+}
+
+[data-ready] .content[data-state='open'] {
+  animation: open var(--d-l) var(--ease-out);
+}
+
+[data-ready] .content[data-state='closed'] {
+  animation: close var(--d-m) var(--ease-in-out);
+}
+
+[data-ready] .content[data-state='open'] > .inner {
+  animation: fade var(--d-l) var(--ease-out);
+}
+
+@keyframes open {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes close {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  from {
+    transform: translateY(-4px);
+  }
+  to {
+    transform: none;
+  }
+}

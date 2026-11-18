@@ -1,0 +1,187 @@
+/* Petits éléments de l'espace marque (pastilles, codes pays, légendes). */
+
+.vby {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 500 var(--fs-s) / 1 var(--font-ui);
+  color: var(--tx-3);
+  white-space: nowrap;
+}
+
+.vby svg {
+  width: 16px;
+  height: 16px;
+  color: var(--ac-hv);
+  stroke-width: 1.9;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font-size: var(--fs-s);
+  color: var(--tx-2);
+}
+
+.legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.sti {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border-radius: var(--r-s);
+  background: var(--icon-bg);
+  color: var(--tx-3);
+  transition: background-color var(--d-s) var(--ease-out), color var(--d-s) var(--ease-out);
+}
+
+.sti svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.8;
+}
+
+.stiOn {
+  background: var(--ink);
+  color: var(--tx-inv);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: var(--r-xs);
+  color: var(--ac-hv);
+  font: 500 13px / 1 var(--font-ui);
+  white-space: nowrap;
+  transition: color var(--d-s) var(--ease-out);
+}
+
+.link svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.9;
+  transition: transform var(--d-m) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--ac-dk);
+}
+
+.link:hover svg {
+  transform: translateX(2px);
+}
+
+/* ---------------------------------------------------------------- Paliers
+   Jetons manquants (à promouvoir dans tokens.css) : tons des paliers 2 et 3, entre l'ambre et le jaune.
+   Contraste du texte sur son fond : T1 6,6:1, T2 5,3:1, T3 6,4:1, T4 5,9:1. */
+
+.prio,
+.tierB,
+.tierDot {
+  --t1: var(--ko);
+  --t1-bg: var(--tag-red-bg);
+  --t1-tx: var(--tag-red);
+  --t2: #F08C00;
+  --t2-bg: #FFEAD5;
+  --t2-tx: #B54708;
+  --t3: #EAB308;
+  --t3-bg: #FEF5D3;
+  --t3-tx: #854D0E;
+  --t4: var(--ac);
+  --t4-bg: var(--tag-blue-bg);
+  --t4-tx: var(--tag-blue);
+}
+
+.prio,
+.tierB {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  height: 20px;
+  padding: 0 7px 0 6px;
+  border-radius: var(--r-xs);
+  font: 600 11px / 1 var(--font-ui);
+  white-space: nowrap;
+}
+
+.prio svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.2;
+}
+
+.tierB {
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px 0 8px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-xs);
+}
+
+.tierB i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.t1 { background: var(--t1-bg); color: var(--t1-tx); }
+.t2 { background: var(--t2-bg); color: var(--t2-tx); }
+.t3 { background: var(--t3-bg); color: var(--t3-tx); }
+.t4 { background: var(--t4-bg); color: var(--t4-tx); }
+
+.tierDot {
+  display: inline-block;
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.d1 { background: var(--t1); }
+.d2 { background: var(--t2); }
+.d3 { background: var(--t3); }
+.d4 { background: var(--t4); }
+.d0 { background: var(--surf); box-shadow: inset 0 0 0 1.5px var(--bd-dash); }
+
+.mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: 500 var(--fs-xs) / 1.2 var(--font-ui);
+  color: var(--tx-3);
+  white-space: nowrap;
+}
+
+.mail svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2;
+}
+
+.delay {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: var(--r-pill);
+  font: 600 12px / 1 var(--font-ui);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.delayGood { background: var(--good-bg); color: var(--good); }
+.delayNeu { background: var(--neu-bg); color: var(--neu); }
+.delayBad { background: var(--bad-bg); color: var(--bad); }
+

@@ -1,0 +1,109 @@
+.wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* Le vrai champ couvre les cases, invisible : il reçoit la frappe, le collage et le remplissage automatique. */
+.input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  caret-color: transparent;
+  font-size: var(--fs-l);
+  letter-spacing: 2em;
+  outline: none;
+  cursor: text;
+}
+
+.input::selection {
+  background: transparent;
+}
+
+.input:disabled {
+  cursor: default;
+}
+
+.boxes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  height: 58px;
+  border: 1.5px solid var(--bd-strong);
+  border-radius: var(--r-m);
+  background: var(--surf);
+  color: var(--tx);
+  font: 600 24px/1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+  transition:
+    border-color var(--d-s) var(--ease-out),
+    box-shadow var(--d-s) var(--ease-out),
+    background-color var(--d-s) var(--ease-out);
+}
+
+.filled {
+  border-color: var(--tx-3);
+}
+
+.cur {
+  border-color: var(--ac);
+  box-shadow: var(--sh-focus);
+}
+
+.caret {
+  width: 2px;
+  height: 24px;
+  border-radius: 1px;
+  background: var(--ac);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.busy .box {
+  background: var(--surf-2);
+  color: var(--tx-3);
+}
+
+.error .box {
+  border-color: var(--bad);
+  background: color-mix(in srgb, var(--ko) 4%, var(--surf));
+}
+
+.ok .box {
+  border-color: var(--good);
+  background: color-mix(in srgb, var(--good) 6%, var(--surf));
+  color: var(--good);
+}
+
+@media (max-width: 360px) {
+  .boxes {
+    gap: 6px;
+  }
+
+  .box {
+    height: 52px;
+    font-size: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}

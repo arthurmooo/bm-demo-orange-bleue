@@ -1,0 +1,159 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: var(--scrim);
+  backdrop-filter: blur(2px);
+  animation: fadeIn var(--d-m) var(--ease-out);
+}
+
+.overlay[data-state='closed'] {
+  animation: fadeOut var(--d-s) var(--ease-in-out) forwards;
+}
+
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: var(--z-sheet);
+  display: flex;
+  flex-direction: column;
+  width: min(var(--w, 560px), calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  border-radius: var(--r-sheet);
+  border: 1px solid var(--bd);
+  background: var(--surf);
+  box-shadow: var(--sh-pop);
+  outline: none;
+  transform: translate(-50%, -50%);
+  animation: dialogIn var(--d-l) var(--ease-out);
+}
+
+.content[data-state='closed'] {
+  animation: dialogOut var(--d-s) var(--ease-in-out) forwards;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 20px 0 24px;
+}
+
+.titles {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.title {
+  font: 600 18px / 1.3 var(--font-display);
+  color: var(--tx);
+}
+
+.desc {
+  font-size: 13px;
+  color: var(--tx-3);
+}
+
+.body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px 24px 20px;
+}
+
+.foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--bd-2);
+}
+
+/* ---------------------------------------------------------------- Tiroir */
+
+.drawer {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: var(--z-sheet);
+  display: flex;
+  flex-direction: column;
+  width: min(var(--w, 480px), calc(100vw - 20px));
+  border-radius: var(--r-panel);
+  border: 1px solid var(--bd);
+  background: var(--surf);
+  box-shadow: -20px 0 48px rgba(16, 24, 40, 0.16);
+  outline: none;
+  animation: drawerIn var(--d-l) var(--ease-out);
+}
+
+.drawer[data-state='closed'] {
+  animation: drawerOut var(--d-m) var(--ease-in-out) forwards;
+}
+
+.drawer .head {
+  align-items: center;
+  padding: 18px 16px 16px 20px;
+  border-bottom: 1px solid var(--bd-2);
+}
+
+.drawer .body {
+  padding: 18px 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 10px)) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes dialogOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 6px)) scale(0.98);
+  }
+}
+
+@keyframes drawerIn {
+  from {
+    opacity: 0.6;
+    transform: translateX(calc(100% + 20px));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drawerOut {
+  from {
+    transform: none;
+  }
+  to {
+    transform: translateX(calc(100% + 20px));
+  }
+}

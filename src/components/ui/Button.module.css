@@ -1,0 +1,174 @@
+.btn {
+  --h: var(--ctl-h);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: var(--h);
+  padding: 0 14px;
+  border-radius: var(--r-ctl);
+  border: 1px solid var(--bd);
+  background: var(--surf);
+  color: var(--tx);
+  font: 500 var(--fs-m) / 1 var(--font-ui);
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  box-shadow: var(--sh-1);
+  transition:
+    background-color var(--d-s) var(--ease-out),
+    border-color var(--d-s) var(--ease-out),
+    color var(--d-s) var(--ease-out),
+    box-shadow var(--d-s) var(--ease-out),
+    transform var(--d-m) var(--ease-spring);
+}
+
+.btn:hover {
+  background: var(--hv);
+  border-color: var(--bd-hv);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(var(--tap));
+  transition-duration: var(--d-xs);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.45;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  stroke-width: 1.9;
+}
+
+/* Variantes */
+.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--tx-inv);
+  box-shadow: 0 1px 2px rgba(15, 27, 51, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.primary:hover {
+  background: var(--ink-hv);
+  border-color: var(--ink-hv);
+}
+
+.blue {
+  background: var(--ac-hv);
+  border-color: var(--ac-hv);
+  color: var(--tx-inv);
+  box-shadow: 0 1px 2px rgba(8, 120, 249, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.blue:hover {
+  background: var(--ac-dk);
+  border-color: var(--ac-dk);
+}
+
+.danger {
+  background: var(--ko-strong);
+  border-color: var(--ko-strong);
+  color: var(--tx-inv);
+}
+.danger:hover {
+  background: var(--ko-hv);
+  border-color: var(--ko-hv);
+}
+
+.ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--tx-2);
+}
+.ghost:hover {
+  background: var(--hv);
+  border-color: transparent;
+  color: var(--tx);
+}
+
+/* Tailles */
+.s {
+  --h: var(--ctl-h-s);
+  padding: 0 11px;
+  font-size: var(--fs-s);
+  border-radius: var(--r-s);
+}
+
+.l {
+  --h: 44px;
+  padding: 0 18px;
+  font-size: var(--fs-base);
+  border-radius: var(--r-m);
+}
+
+.touch {
+  --h: var(--ctl-h-touch);
+  padding: 0 20px;
+  gap: 8px;
+  font-size: var(--fs-l);
+  border-radius: var(--r-l);
+}
+
+.touch svg {
+  width: 18px;
+  height: 18px;
+}
+
+.full {
+  width: 100%;
+}
+
+.iconOnly {
+  width: var(--h);
+  padding: 0;
+}
+
+/* Chargement : le contenu garde sa place, le rond tourne au centre */
+.loading {
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.loading > :not(.spinner) {
+  visibility: hidden;
+}
+
+.spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+.primary .spinner,
+.blue .spinner,
+.danger .spinner {
+  color: var(--tx-inv);
+}
+
+.btn:not(.primary):not(.blue):not(.danger) .spinner {
+  color: var(--tx-2);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

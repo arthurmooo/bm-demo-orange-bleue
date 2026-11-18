@@ -1,0 +1,867 @@
+/* ---------------------------------------------------------------- Bloc d'ouverture */
+
+.hero {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 28px 40px;
+}
+
+.gw {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.ringNum {
+  font: 600 48px / 1 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--tx);
+}
+
+.ringOf {
+  margin-top: 5px;
+  font: 500 13px / 1 var(--font-display);
+  color: var(--tx-3);
+}
+
+.gd {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  color: var(--tx-3);
+  white-space: nowrap;
+}
+
+.gd:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+}
+
+/* Centré sur l'anneau et non sur l'anneau + « +3 » : la hauteur de la ligne « +3 » (22 px) et son écart (12 px). */
+.hm {
+  min-width: 0;
+  padding-bottom: 34px;
+}
+
+.hm h1 {
+  max-width: 14em;
+  font: 600 clamp(30px, 2.8vw, 40px) / 1.12 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--tx);
+  text-wrap: balance;
+}
+
+.meta {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--tx-3);
+}
+
+.focusable {
+  border-radius: var(--r-pill);
+}
+
+/* Avancement des commandes : chiffre, barre par état, légende. */
+.prog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  padding: 24px 28px;
+}
+
+.pn {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pn b {
+  font: 600 48px / 1 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--tx);
+  font-variant-numeric: tabular-nums;
+}
+
+.pn > span {
+  font: 500 20px / 1 var(--font-display);
+  color: var(--tx-3);
+}
+
+.seg {
+  display: flex;
+  gap: 3px;
+  height: 10px;
+  margin-top: 20px;
+}
+
+.seg i {
+  display: block;
+  flex-basis: 0;
+  min-width: 6px;
+  border-radius: 3px;
+  transform-origin: 0 50%;
+}
+
+.done { background: var(--ac-dk); }
+.run { background: var(--ac); }
+.buy { background: color-mix(in srgb, var(--ac) 40%, var(--surf)); }
+.todo { background: var(--ac-soft); box-shadow: inset 0 0 0 1px var(--ac-tint); }
+
+.segl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--tx-3);
+}
+
+.segl > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.segl i {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.segl b {
+  font-weight: 600;
+  color: var(--tx);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------- KPI */
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px 12px;
+}
+
+.kh {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.kl {
+  font: 500 13px / 1.3 var(--font-ui);
+  color: var(--tx-2);
+}
+
+.kic {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: var(--r-ctl);
+  background: var(--icon-bg);
+  color: var(--tx-3);
+}
+
+.kic svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.8;
+}
+
+.kv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.kn {
+  font: 600 36px / 1.05 var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--tx);
+}
+
+.kn small {
+  margin-left: 2px;
+  font: 500 15px / 1 var(--font-display);
+  letter-spacing: 0;
+  color: var(--tx-3);
+}
+
+.vs {
+  font-size: 12px;
+  color: var(--tx-3);
+}
+
+/* ---------------------------------------------------------------- Courbe de confiance */
+
+.cf {
+  padding: 20px 22px 0;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 32px;
+  padding: 0 12px 0 10px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--bd);
+  background: var(--surf);
+  color: var(--tx-2);
+  font: 500 var(--fs-s) / 1 var(--font-ui);
+  transition: border-color var(--d-s) var(--ease-out), background-color var(--d-s) var(--ease-out), color var(--d-s) var(--ease-out), transform var(--d-m) var(--ease-spring);
+}
+
+.chip:hover {
+  border-color: var(--bd-hv);
+  color: var(--tx);
+}
+
+.chip:active {
+  transform: scale(var(--tap));
+  transition-duration: var(--d-xs);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--surf-head);
+  border-color: var(--bd-hv);
+  color: var(--tx);
+  font-weight: 600;
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: 2px;
+  border-radius: var(--r-pill);
+}
+
+.cdot {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid;
+  transition: background-color var(--d-s) var(--ease-out);
+}
+
+.chart {
+  margin-top: 22px;
+}
+
+.ro {
+  overflow: hidden;
+  margin: 0 -22px;
+  border-radius: 0 0 17px 17px;
+}
+
+.roIn {
+  display: flex;
+  align-items: center;
+  gap: 12px 16px;
+  flex-wrap: wrap;
+  padding: 12px 22px;
+  background: var(--surf-head);
+  border-top: 1px solid var(--bd);
+}
+
+.rot {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 var(--fs-m) / 1.2 var(--font-ui);
+  color: var(--tx);
+}
+
+.rov {
+  font-size: var(--fs-s);
+  color: var(--tx-3);
+}
+
+.rov b {
+  font: 600 var(--fs-l) / 1 var(--font-display);
+  color: var(--tx);
+  font-variant-numeric: tabular-nums;
+}
+
+.rodl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rcs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rc {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px 0 9px;
+  border-radius: var(--r-l);
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  font: 500 12px / 1 var(--font-ui);
+  color: var(--tx-3);
+}
+
+.rc b {
+  font: 600 var(--fs-s) / 1 var(--font-display);
+  color: var(--tx);
+  font-variant-numeric: tabular-nums;
+}
+
+.rc .cdot {
+  width: 8px;
+  height: 8px;
+  border-width: 0;
+}
+
+.roEnd {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+/* ---------------------------------------------------------------- Comparaison des pays */
+
+/* La carte prend la hauteur de sa voisine : les lignes se répartissent la place, l'axe reste collé dessous. */
+.cmpCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.cmpw {
+  position: relative;
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-rows: repeat(var(--n), minmax(0, 1fr)) auto;
+  margin-top: 14px;
+}
+
+.cr {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) 50px 84px;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 8px;
+  border-radius: var(--r-m);
+  color: inherit;
+  transition: background-color var(--d-s) var(--ease-out);
+}
+
+a.cr:hover {
+  background: var(--row-hv);
+}
+
+a.cr:active {
+  background: var(--sel-bg);
+}
+
+a.cr:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: 0;
+}
+
+.crn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.crx {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.crx b {
+  overflow: hidden;
+  font: 600 var(--fs-m) / 1.2 var(--font-ui);
+  color: var(--tx);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.crx span {
+  font-size: 12px;
+  color: var(--tx-3);
+}
+
+.crs {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.crd {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cax {
+  position: relative;
+  height: 16px;
+  margin: 6px 170px 0 172px;
+}
+
+.cax span {
+  position: absolute;
+  transform: translateX(-50%);
+  font: 500 11px / 1 var(--font-ui);
+  color: var(--tx-4);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------- Problèmes récurrents */
+
+.rcf {
+  margin-top: 16px;
+}
+
+.rct {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.rcx {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.ttl {
+  overflow: hidden;
+  font: 600 var(--fs-base) / 1.35 var(--font-ui);
+  color: var(--tx);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tsub {
+  overflow: hidden;
+  font-size: var(--fs-s);
+  color: var(--tx-3);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rmc {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 28px;
+  border-radius: var(--r-s);
+  font: 600 12px / 1 var(--font-display);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.l0 { color: var(--tx-4); }
+.l1 { background: var(--tag-amber-bg); color: var(--tag-amber); }
+.l2 { background: var(--heat-bg); color: var(--heat); }
+.l3 { background: var(--ko-strong); color: var(--tx-inv); }
+
+.rtot {
+  font-size: 12px;
+  color: var(--tx-3);
+  white-space: nowrap;
+}
+
+.rtot b {
+  margin-right: 4px;
+  font: 600 15px / 1 var(--font-display);
+  color: var(--tx);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------- Frictions graves */
+
+.fl {
+  position: relative;
+  margin-top: 16px;
+}
+
+.fxt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ttl2 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  min-width: 0;
+  font: 600 var(--fs-m) / 1.35 var(--font-ui);
+  color: var(--tx);
+  transition: color var(--d-m) var(--ease-out);
+}
+
+.fxs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.fxa {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.isNew {
+  background: var(--new-bg);
+}
+
+.isNew:hover {
+  background: var(--new-hv) !important;
+}
+
+.isFixed .ttl2 {
+  color: var(--tx-3);
+}
+
+.lk {
+  border-radius: var(--r-xs);
+}
+
+.lk:hover {
+  color: var(--ac-hv);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.fxtg {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hms {
+  font-size: 12px;
+  color: var(--tx-3);
+}
+
+.leaving,
+.leaving:hover {
+  background: var(--good-bg) !important;
+}
+
+.fresh {
+  animation: fresh 2.4s var(--ease-out);
+}
+
+@keyframes fresh {
+  from {
+    background: var(--good-bg);
+  }
+  to {
+    background: transparent;
+  }
+}
+
+.hby {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  font-size: var(--fs-s);
+  color: var(--tx-2);
+  white-space: nowrap;
+}
+
+.hby > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fempty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 16px;
+  font-size: var(--fs-m);
+  color: var(--tx-3);
+}
+
+.fempty svg {
+  width: 16px;
+  height: 16px;
+  color: var(--good);
+}
+
+.avf {
+  display: inline-flex;
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fresh {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------- Rapports récapitulatifs */
+
+.fi {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-ctl);
+}
+
+.fi svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.8;
+}
+
+.fiSyn {
+  background: var(--ac-soft);
+  color: var(--ac-hv);
+}
+
+.fiUp {
+  background: var(--icon-bg);
+  color: var(--tx-3);
+}
+
+.rpx {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.rpt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rpl {
+  color: var(--tx);
+  border-radius: var(--r-xs);
+  transition: color var(--d-s) var(--ease-out);
+}
+
+.rpl:hover {
+  color: var(--ac-hv);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.up .ttl2 {
+  color: var(--tx-2);
+}
+
+.rpd {
+  font-size: var(--fs-s);
+  color: var(--tx-3);
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1180px) {
+  .hero {
+    gap: 28px;
+    padding: 24px 28px;
+  }
+}
+
+/* Tablette en portrait : l'anneau passe au-dessus du titre, qui garde toute la largeur du bloc. */
+@media (min-width: 720px) and (max-width: 899px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .gw {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .hm {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .segl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.rcc::before {
+  display: none;
+}
+
+@media (max-width: 719px) {
+  .hero {
+    grid-column: auto;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .hm {
+    width: 100%;
+  }
+
+  .cf {
+    padding-inline: 16px;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chip {
+    min-height: 44px;
+  }
+
+  .ro {
+    margin: 0 -16px;
+  }
+
+  .roIn {
+    padding-inline: 16px;
+  }
+
+  .cmpCard > :first-child > :nth-child(2),
+  .cr > :nth-child(2),
+  .cax {
+    display: none !important;
+  }
+
+  .cr {
+    grid-template-columns: minmax(0, 1fr) 46px auto;
+    gap: 10px;
+    min-height: 56px;
+    padding-inline: 0;
+  }
+
+  .ttl2,
+  .tsub {
+    display: block;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  .rcCards {
+    --cols: repeat(5, minmax(0, 1fr)) !important;
+    --gap: 6px !important;
+  }
+
+  .rcCards [role='rowgroup']:has([role='columnheader']) {
+    display: none;
+  }
+
+  .rcCards [role='row'] {
+    row-gap: 10px;
+  }
+
+  .rcCards .rct,
+  .rcCards .rtot {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .rcc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    justify-self: stretch;
+  }
+
+  .rcc::before {
+    content: attr(data-c);
+    display: block;
+    font: 600 var(--fs-xs) / 1 var(--font-ui);
+    color: var(--tx-3);
+  }
+
+  .fl [role='row'] {
+    row-gap: 10px;
+    padding-block: 14px;
+  }
+
+  .fxa,
+  .fxa > span,
+  .fxa button {
+    display: block;
+    width: 100%;
+  }
+
+  .hby {
+    margin-top: 2px;
+  }
+}
+
+/* Au doigt : zone de toucher portée à 44 px sans déplacer la mise en page. */
+@media (pointer: coarse) {
+  .chips {
+    row-gap: 12px;
+  }
+
+  .chip {
+    position: relative;
+  }
+
+  .chip::after {
+    content: '';
+    position: absolute;
+    inset: -6px 0;
+  }
+
+  .lk,
+  .rpl {
+    position: relative;
+    z-index: 1;
+    padding-block: 13px;
+    margin-block: -13px;
+  }
+}

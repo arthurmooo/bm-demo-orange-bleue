@@ -1,0 +1,82 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(358px, calc(100vw - 32px));
+  padding: 12px 14px;
+  border-radius: var(--r-l);
+  background: var(--ink);
+  color: var(--tx-inv);
+  font: 500 var(--fs-m) / 1.35 var(--font-ui);
+  box-shadow: var(--sh-ink);
+  /* sonner anime en 400 ms linéaires : on reprend la durée et la courbe du système (le glissé reste géré par sonner) */
+  transition-duration: var(--d-l) !important;
+  transition-timing-function: var(--ease-out) !important;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+.body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 500;
+}
+
+/* Bouton d'action (« Annuler ») sur fond marine */
+.action {
+  flex: none;
+  height: 30px;
+  margin: -4px -4px -4px 4px;
+  padding: 0 10px;
+  border-radius: var(--r-s);
+  color: var(--ink-info);
+  font: 600 var(--fs-s) / 1 var(--font-ui);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--d-s) var(--ease-out), transform var(--d-m) var(--ease-spring);
+}
+
+.action:hover {
+  background: color-mix(in srgb, var(--tx-inv) 10%, transparent);
+}
+
+.action:active {
+  transform: scale(var(--tap));
+  transition-duration: var(--d-xs);
+}
+
+.action:focus-visible {
+  outline: 2px solid var(--ink-info);
+  outline-offset: 1px;
+}
+
+.desc {
+  margin-top: 2px;
+  font-size: var(--fs-s);
+  color: var(--tx-inv-2);
+}
+
+.ok .icon {
+  color: var(--ink-good);
+}
+
+.info .icon {
+  color: var(--ink-info);
+}
+
+.error .icon {
+  color: var(--ink-bad);
+}

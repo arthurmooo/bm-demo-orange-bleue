@@ -1,0 +1,37 @@
+.sk {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--bd-2);
+  border-radius: var(--r-s);
+}
+
+.sk::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  animation: shimmer 1.4s var(--ease-in-out) infinite;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.text {
+  height: 12px;
+  border-radius: var(--r-xs);
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sk::after {
+    animation: none;
+  }
+}

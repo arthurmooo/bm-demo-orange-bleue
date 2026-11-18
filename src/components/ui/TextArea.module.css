@@ -1,0 +1,74 @@
+.box {
+  border: 1px solid var(--bd);
+  border-radius: var(--r-m);
+  background: var(--surf);
+  transition:
+    border-color var(--d-s) var(--ease-out),
+    box-shadow var(--d-s) var(--ease-out);
+}
+
+.box:hover {
+  border-color: var(--bd-hv);
+}
+
+.box:focus-within {
+  border-color: var(--ac);
+  box-shadow: var(--sh-sel);
+}
+
+.rec,
+.rec:hover,
+.rec:focus-within {
+  border-color: var(--ko);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ko) 12%, transparent);
+}
+
+.txa {
+  display: block;
+  width: 100%;
+  padding: 12px 14px 4px;
+  font: 400 var(--fs-l)/1.45 var(--font-ui);
+  color: var(--tx);
+  resize: none;
+  outline: none;
+  field-sizing: content;
+  max-height: 320px;
+}
+
+.txa:focus-visible {
+  outline: none;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 56px;
+  padding: 2px 6px 6px 14px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: 600 var(--fs-s) / 1 var(--font-ui);
+  color: var(--neu);
+  transition: color var(--d-m) var(--ease-out);
+}
+
+.count svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.4;
+}
+
+.ok {
+  color: var(--good);
+}

@@ -1,0 +1,107 @@
+.list {
+  --ring-gap: 6px;
+  position: relative;
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  /* Marge débordante : la liste défile et couperait l'anneau du premier et du dernier onglet. */
+  margin-inline: calc(var(--ring-gap) * -1);
+  padding-inline: var(--ring-gap);
+  background: linear-gradient(var(--bd), var(--bd)) center bottom / calc(100% - var(--ring-gap) * 2) 1px no-repeat;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  height: 42px;
+  padding: 0 1px;
+  color: var(--tx-3);
+  font: 500 var(--fs-m) / 1 var(--font-ui);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--d-s) var(--ease-out);
+}
+
+.tab:hover {
+  color: var(--tx);
+}
+
+.tab[data-state='active'],
+.tab[aria-current='page'] {
+  color: var(--tx);
+}
+
+/* Libellé : la copie en gras, invisible, réserve la largeur du libellé actif */
+.lbl {
+  display: inline-grid;
+}
+
+.lblBold,
+.lblCur {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lblBold {
+  visibility: hidden;
+  font-weight: 600;
+}
+
+.tab[data-state='active'] .lblCur,
+.tab[aria-current='page'] .lblCur {
+  font-weight: 600;
+}
+
+.tab:focus-visible {
+  outline: none;
+}
+
+/* Radix pose le focus par script au clic : `data-pointer` garde l'anneau au clavier. */
+.tab:focus-visible:not([data-pointer])::before {
+  content: '';
+  position: absolute;
+  inset: 6px calc(var(--ring-gap) * -1 + 2px);
+  border-radius: var(--r-s);
+  outline: 2px solid var(--ac);
+}
+
+.tab[data-disabled] {
+  color: var(--tx-4);
+  cursor: not-allowed;
+}
+
+.indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.lg {
+  gap: 28px;
+}
+
+.lg .tab {
+  height: 50px;
+  gap: 9px;
+  font-size: var(--fs-base);
+}
+
+.content:focus-visible {
+  outline: none;
+}

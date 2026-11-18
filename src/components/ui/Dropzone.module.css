@@ -1,0 +1,135 @@
+.root {
+  display: contents;
+}
+
+.zone {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 184px;
+  padding: var(--s-6);
+  border: 1.5px dashed var(--bd-strong);
+  border-radius: var(--r-l);
+  background: var(--surf-2);
+  text-align: center;
+  transition:
+    border-color var(--d-s) var(--ease-out),
+    background-color var(--d-s) var(--ease-out);
+}
+
+.zone:hover,
+.over {
+  border-color: var(--ac);
+  background: var(--sel-bg);
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-l);
+  background: var(--ac-soft);
+  color: var(--ac-hv);
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.9;
+}
+
+.title {
+  font: 600 var(--fs-l) / 1.3 var(--font-ui);
+  color: var(--tx);
+}
+
+.or {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-m);
+  color: var(--tx-3);
+}
+
+.formats {
+  font-size: var(--fs-s);
+  color: var(--tx-3);
+}
+
+.mobile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 64px;
+  padding: 10px 14px 10px 10px;
+  border: 1.5px dashed var(--bd-strong);
+  border-radius: var(--r-l);
+  background: var(--surf-2);
+  color: var(--tx);
+  font: 500 15px/1.3 var(--font-ui);
+  text-align: left;
+  transition:
+    border-color var(--d-s) var(--ease-out),
+    background-color var(--d-s) var(--ease-out),
+    transform var(--d-m) var(--ease-spring);
+}
+
+.mobile:hover {
+  border-color: var(--ac);
+  background: var(--sel-bg);
+}
+
+.mobile:active {
+  transform: scale(var(--tap-lg));
+}
+
+.mobile:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+}
+
+.mIcon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: var(--r-m);
+  background: var(--ac-soft);
+  color: var(--ac-hv);
+}
+
+.mIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.mText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mText span {
+  font-size: 12px;
+  color: var(--tx-3);
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 1024px) {
+  .zone {
+    display: flex;
+  }
+
+  .mobile {
+    display: none;
+  }
+}

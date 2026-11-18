@@ -1,0 +1,104 @@
+.anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.tip {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  /* L'ancre fait 0 px de large : sans largeur au contenu, l'infobulle se tasserait à 150 px et couperait ses libellés. */
+  width: max-content;
+  min-width: 150px;
+  max-width: 260px;
+  padding: 10px 12px;
+  border-radius: var(--r-m);
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  box-shadow: var(--sh-float);
+  white-space: nowrap;
+}
+
+.left {
+  left: auto;
+  right: 14px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font: 600 var(--fs-s) / 1.2 var(--font-ui);
+  color: var(--tx);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 14px auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 8px;
+}
+
+.key {
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.keyDash {
+  background-image: repeating-linear-gradient(90deg, currentColor 0 4px, transparent 4px 7px) !important;
+  background-color: transparent !important;
+}
+
+.keyDot {
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  border-radius: 50%;
+}
+
+.keyBox {
+  width: 10px;
+  height: 10px;
+  margin: 0 2px;
+  border-radius: 3px;
+}
+
+.value {
+  font: 600 13px / 1 var(--font-display);
+  color: var(--tx);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font: 400 12px / 1.2 var(--font-ui);
+  color: var(--tx-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note {
+  font: 400 12px / 1.35 var(--font-ui);
+  color: var(--tx-3);
+}
+
+.foot {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--bd-2);
+  font: 400 12px / 1.35 var(--font-ui);
+  color: var(--tx-3);
+  white-space: normal;
+}

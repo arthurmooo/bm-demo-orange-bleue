@@ -1,0 +1,52 @@
+/* L'Orange Bleue : la structure SaferBuy, aux couleurs du réseau (marine #1C1B39, orange #EA5839). */
+:root {
+  --font-inter: 'Inter Variable';
+  --font-poppins: 'Poppins';
+
+  --bg: #EEEDF2;
+  --canvas: #F8F7FA;
+  --hv: #F4F3F7;
+  --press: #ECEAF1;
+  --surf-head: #F7F6F9;
+  --row-hv: #FFF7F4;
+  --icon-bg: #F4F2F7;
+  --chip-bg: #F1EFF4;
+
+  --sel-bg: #FFF4F0;
+  --sel-bd: #F8CFC3;
+  --sel-ring: rgba(234, 88, 57, 0.16);
+
+  --bd: #E5E3EB;
+  --bd-2: #EFEDF3;
+  --bd-hv: #D3CFDD;
+
+  --tx: #1C1B39;
+  --tx-2: #3E3D5A;
+  --tx-3: #5F5E78;
+  --tx-4: #6B6A82;
+
+  --ink: #1C1B39;
+  --ink-hv: #2E2D55;
+  --ac: #EA5839;
+  --ac-hv: #D6482A;
+  --ac-dk: #B33A20;
+  --ac-soft: #FDEEE9;
+  --ac-ring: rgba(234, 88, 57, 0.32);
+  --ac-tint: #F9D5CA;
+  --ok: #1C1B39;
+
+  --tag-blue-bg: #ECEBF6; --tag-blue: #2E2D6B;
+  --role-brand-bg: #FDEEE9; --role-brand: #B33A20;
+  --role-staff-bg: #ECEBF6; --role-staff: #2E2D6B;
+
+  /* Clubs */
+  --c-laval: #EA5839;
+  --c-mayenne: #1C1B39;
+  --c-craon: #0CA5A5;
+  --c-gontier: #7B61FF;
+  --c-sable: #E39B0B;
+
+  --sh-focus: 0 0 0 2px var(--surf), 0 0 0 4px var(--ac);
+  --sh-ink: 0 10px 28px -8px rgba(28, 27, 57, 0.38);
+  --scrim: rgba(28, 27, 57, 0.4);
+}

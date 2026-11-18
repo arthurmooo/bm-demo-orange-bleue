@@ -1,0 +1,39 @@
+.content {
+  z-index: var(--z-tip);
+  max-width: 300px;
+  padding: 7px 10px;
+  border-radius: var(--r-s);
+  background: var(--ink);
+  color: var(--tx-inv);
+  font: 500 12px / 1.4 var(--font-ui);
+  box-shadow: var(--sh-ink);
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  user-select: none;
+  animation: in var(--d-s) var(--ease-out);
+}
+
+.content[data-state='closed'] {
+  animation: out var(--d-xs) var(--ease-in-out) forwards;
+}
+
+.content :global(.num) {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes out {
+  to {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
