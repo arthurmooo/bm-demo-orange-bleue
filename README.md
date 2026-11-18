@@ -9,6 +9,7 @@ un rechargement remet la démo à zéro.
 - Production : https://demo-orange-bleue.bm-automation-france.com (noindex)
 - Déroulé du rendez-vous : [`docs/DEROULE.md`](docs/DEROULE.md)
 - Script à lire pendant la démo : [`docs/SCRIPT.md`](docs/SCRIPT.md)
+- Trame du R2 (douleur, démo, devis) : [`docs/TRAME.md`](docs/TRAME.md)
 
 ## Développer
 
